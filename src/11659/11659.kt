@@ -1,3 +1,5 @@
+package `11659`
+
 fun main() {
     val (N, M) = readln().split(" ").map { it.toInt() }
     val list = readln().split(" ").map { it.toInt() }

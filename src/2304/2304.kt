@@ -1,3 +1,5 @@
+package `2304`
+
 fun main() {
     val N = readln().toInt()
 
