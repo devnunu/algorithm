@@ -16,8 +16,9 @@ fun main() {
     for (i in 0..<N) {
         list[i] = readln().toInt()
     }
-
-    println(recur(0, 0))
+    println(list.contentToString())
+    recur(0, 0)
+    println(dp.contentToString())
 }
 
 fun recur(idx: Int, sum: Int): Int {
@@ -28,10 +29,15 @@ fun recur(idx: Int, sum: Int): Int {
             return Int.MAX_VALUE
         }
     }
-    return minOf(
+    if (dp[idx] != Int.MAX_VALUE) {
+        return dp[idx]
+    }
+    val result = minOf(
         // 선택하는 경우
         recur(idx + 1, sum + list[idx]),
         // 선택하지 않는 경우
         recur(idx + 1, sum)
     )
+    dp[idx] = minOf(result, dp[idx])
+    return dp[idx]
 }
