@@ -2,7 +2,7 @@ package `9372`
 
 var N = 0
 var M = 0
-lateinit var list: Array<MutableList<Int>>
+lateinit var graph: Array<MutableList<Int>>
 lateinit var visited: IntArray
 var count = 0
 
@@ -14,13 +14,13 @@ fun main() {
             N = it[0]
             M = it[1]
         }
-        list = Array(N + 1) { mutableListOf() }
+        graph = Array(N + 1) { mutableListOf() }
         visited = IntArray(N + 1) { 0 }
 
         repeat(M) {
             val (a, b) = readln().split(" ").map { it.toInt() }
-            list[a].add(b)
-            list[b].add(a)
+            graph[a].add(b)
+            graph[b].add(a)
         }
 
         count = 0
@@ -35,7 +35,7 @@ fun recur(node: Int) {
     }
     count += 1
     visited[node] = 1
-    for (nxt in list[node]) {
+    for (nxt in graph[node]) {
         recur(nxt)
     }
 }
